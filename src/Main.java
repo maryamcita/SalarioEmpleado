@@ -21,7 +21,38 @@ public class Main {
         documentoEmpleado = sc.nextLine();
         System.out.println("ingrese el dia de descanso solamente de lunes a viernes");
         diaDescanso = sc.nextLine();
+        System.out.println ("ingrese el valor de la hora");
+        valorHora = sc.nextDouble();  
+        System.out.println ("ingrese la cantidad de horas trabajadas");
+        horasTrabajadas = sc.nextDouble();
+        salarioBruto = horasTrabajadas * valorHora;
+        if(salarioBruto<=valorSalarioMinimo*2){
+            auxilioTransporte = 200000;
+            bonificacionEmpleado = salarioBruto * 0.1;
+        }else{
+            auxilioTransporte = 0;
+            bonificacionEmpleado = 0;
+        }
+        deduccionPension = salarioBruto * 0.04;
+        deduccionSalud = salarioBruto * 0.04;
+        if(horasTrabajadas > 96){
+            horasExtra = horasTrabajadas - 96;
+            valorHoraExtra = valorHora * 1.25;
+            totalHorasExtras = horasExtra * valorHoraExtra;  
+            
+        }
+        if(horasTrabajadas < 24){
+            System.out.println("aun no le puedo pagar, trabaje mas");
+        } else {
+            salarioNeto = salarioBruto - deduccionPension - deduccionSalud + auxilioTransporte + bonificacionEmpleado + horasExtra;
+            System.out.println("El empleado" + nombreEmpledo);
+            System.out.println("Con numero de documento:" + documentoEmpleado);
+            System.out.println("el salario del empleado es:" + salarioNeto);
+            System.out.println("esta es la cantidad a pagar por sus horas extra:" + horasExtra);
+            System.out.println("este es el valor a pagar por su auxilio " + auxilioTransporte);
+            System.out.println("el porcentaje de tus prestaciones sociales" + deduccionPension + deduccionSalud);
 
+        }
     }
 }
 
